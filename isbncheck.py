@@ -1,4 +1,4 @@
-def validate_isbn(isbn):
+def validate_isbn10(isbn):
     if len(isbn) != 10:
         return "invalid"
 
@@ -17,4 +17,4 @@ def validate_isbn(isbn):
 
 if __name__ == "__main__":
     isbn = "123456789x"
-    print("'{}' is {} ISBN-10 number".format(isbn, validate_isbn(isbn)))
+    print("'{}' is {} ISBN-10 number".format(isbn, validate_isbn10(isbn)))
