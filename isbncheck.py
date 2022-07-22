@@ -1,17 +1,17 @@
 class ISBN10:
-    def __init__(self):
-        pass
+    def __init__(self, isbn):
+        self.isbn = isbn
 
-    def validate_isbn10(self, isbn):
-        if len(isbn) != 10:
+    def validate_isbn10(self):
+        if len(self.isbn) != 10:
             return "invalid"
 
-        isbn = [int(i) for i in isbn if i != 'x' and i != 'X']
+        self.isbn = [int(i) for i in self.isbn if i != 'x' and i != 'X']
 
-        if len(isbn) == 9:  # this occurs when 'x' is omitted by previous procedure
-            isbn.append(10)
+        if len(self.isbn) == 9:  # this occurs when 'x' is omitted by previous procedure
+            self.isbn.append(10)
 
-        total = sum([(10 - i) * isbn[i] for i in range(len(isbn))])
+        total = sum([(10 - i) * self.isbn[i] for i in range(len(self.isbn))])
 
         if total % 11 == 0:
             return "valid"
