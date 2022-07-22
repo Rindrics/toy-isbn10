@@ -1,4 +1,7 @@
 def validate_isbn(isbn):
+    if len(isbn) != 10:
+        return "invalid"
+
     isbn = [int(i) for i in isbn if i != 'x' and i != 'X']
 
     if len(isbn) == 9:  # this occurs when 'x' is omitted by previous procedure
