@@ -3,10 +3,16 @@ from isbncheck import ISBN10
 
 
 def test_ISBN10():
-    assert ISBN10("123456789x").validate() == "valid"
-    assert ISBN10("1234567891").validate() == "invalid"
+    valid = ISBN10("123456789x")
+    assert valid.isbn == "123456789x"
+
+    with pytest.raises(ValueError):
+        ISBN10("1234567891")
 
 
 def test_invalid_length():
-    assert ISBN10("too-short").validate() == "invalid"
-    assert ISBN10("to-loooooooooong").validate() == "invalid"
+    with pytest.raises(ValueError):
+        ISBN10("too-short")
+
+    with pytest.raises(ValueError):
+        ISBN10("to-loooooooooong")
