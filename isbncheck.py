@@ -3,10 +3,18 @@ class ISBN10:
         self.code = isbn
         self.validate()
 
+
     def validate(self):
+        self._check_length()
+        self._check_sum()
+
+
+    def _check_length(self):
         if len(self.code) != 10:
             raise ValueError
 
+
+    def _check_sum(self):
         code_int = [int(i) for i in self.code if i != 'x' and i != 'X']
 
         if len(code_int) == 9:  # this occurs when 'x' is omitted by previous procedure
