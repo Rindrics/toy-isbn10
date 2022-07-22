@@ -1,18 +1,18 @@
 class ISBN10:
     def __init__(self, isbn):
-        self.isbn = isbn
+        self.code = isbn
         self.validate()
 
     def validate(self):
-        if len(self.isbn) != 10:
+        if len(self.code) != 10:
             raise ValueError
 
-        self.isbn = [int(i) for i in self.isbn if i != 'x' and i != 'X']
+        code_int = [int(i) for i in self.code if i != 'x' and i != 'X']
 
-        if len(self.isbn) == 9:  # this occurs when 'x' is omitted by previous procedure
-            self.isbn.append(10)
+        if len(code_int) == 9:  # this occurs when 'x' is omitted by previous procedure
+            code_int.append(10)
 
-        total = sum([(10 - i) * self.isbn[i] for i in range(len(self.isbn))])
+        total = sum([(10 - i) * code_int[i] for i in range(len(code_int))])
 
         if total % 11 != 0:
             raise ValueError
