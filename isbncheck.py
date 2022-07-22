@@ -2,7 +2,7 @@ class ISBN10:
     def __init__(self, isbn):
         self.isbn = isbn
 
-    def validate_isbn10(self):
+    def validate(self):
         if len(self.isbn) != 10:
             return "invalid"
 
@@ -21,4 +21,4 @@ class ISBN10:
 
 if __name__ == "__main__":
     isbn = "123456789x"
-    print("'{}' is {} ISBN-10 number".format(isbn, ISBN10().validate_isbn10(isbn)))
+    print("'{}' is {} ISBN-10 number".format(isbn, ISBN10(isbn).validate()))
