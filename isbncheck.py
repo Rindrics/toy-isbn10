@@ -11,7 +11,7 @@ class ISBN10:
 
     def _check_length(self):
         if len(self.code) != 10:
-            raise ValueError
+            raise ValueError("Length of code: {} (should be 10)".format(len(self.code)))
 
 
     def _check_sum(self):
@@ -23,7 +23,7 @@ class ISBN10:
         total = sum([(10 - i) * code_int[i] for i in range(len(code_int))])
 
         if total % 11 != 0:
-            raise ValueError
+            raise ValueError("Incorrect combination of digits")
 
 
 if __name__ == "__main__":
