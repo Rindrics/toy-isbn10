@@ -1,3 +1,6 @@
+import re
+
+
 class ISBN10:
     def __init__(self, isbn):
         self.code = isbn
@@ -6,12 +9,23 @@ class ISBN10:
 
     def validate(self):
         self._check_length()
+        self._check_digits()
         self._check_sum()
 
 
     def _check_length(self):
         if len(self.code) != 10:
             raise ValueError("Length of code: {} (should be 10)".format(len(self.code)))
+
+
+    def _check_digits(self):
+        invalid_chars = re.findall("\\D", self.code[:-1])
+        if invalid_chars:
+            raise ValueError(
+                "Only digits are allowed for the 1st--9th character (found: " +
+                ", ".join(invalid_chars) +
+                ")"
+                )
 
 
     def _check_sum(self):

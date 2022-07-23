@@ -16,3 +16,8 @@ def test_invalid_length():
 
     with pytest.raises(ValueError, match=r"Length of code"):
         ISBN10("to-loooooooooong")
+
+
+def test_non_digit():
+    with pytest.raises(ValueError, match=r"Only digits are allowed"):
+        ISBN10("non-digits")
