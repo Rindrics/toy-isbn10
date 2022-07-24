@@ -41,5 +41,17 @@ class ISBN10:
 
 
 if __name__ == "__main__":
-    isbn = "123456789x"
-    print("'{}' is valid ISBN-10 number".format(isbn))
+    isbns = [
+        "123456789x",
+        "1234567890",
+        "abc4567890",
+        "too-short",
+        "too-loooooooong",
+        ]
+
+    for i in isbns:
+        try:
+            ISBN10(i)
+            print("'{}' is valid ISBN-10 number".format(i))
+        except ValueError as error:
+            print("{}: '{}'".format(error, i))
