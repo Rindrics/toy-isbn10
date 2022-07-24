@@ -21,3 +21,8 @@ def test_invalid_length():
 def test_non_digit():
     with pytest.raises(ValueError, match=r"Only digits are allowed"):
         ISBN10("non-digits")
+
+
+def test_invalid_tenth_character():
+    with pytest.raises(ValueError, match=r"Only digits or 'X'"):
+        ISBN10("123456789a")
